@@ -7,12 +7,13 @@ class PostTest extends PHPUnit_Framework_TestCase {
         $user = User::first();
         echo $user->firstname;
 
-        Post::create(array(
+        $post = new Post(array(
             'title' => 'A post title',
             'content' => 'Post content!',
             'user_id' => $user->id
         ));
 
+        assert($post->save());
     }
 
 }
