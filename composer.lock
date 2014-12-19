@@ -4,24 +4,29 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf908352a19868b335b803205c3ada23",
+    "hash": "ab3009cbdc61aa172300ffdad3570e4f",
     "packages": [
         {
             "name": "php-activerecord/php-activerecord",
-            "version": "v1.1.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jpfuentes2/php-activerecord.git",
-                "reference": "5a957483801ecc41d95381e9868de7bb08f9be3a"
+                "reference": "083c44632553939169405b95cf09a5ed840cceac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jpfuentes2/php-activerecord/zipball/5a957483801ecc41d95381e9868de7bb08f9be3a",
-                "reference": "5a957483801ecc41d95381e9868de7bb08f9be3a",
+                "url": "https://api.github.com/repos/jpfuentes2/php-activerecord/zipball/083c44632553939169405b95cf09a5ed840cceac",
+                "reference": "083c44632553939169405b95cf09a5ed840cceac",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "pear/log": "dev-master",
+                "pear/pear_exception": "1.0.*@dev",
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
             "autoload": {
@@ -39,7 +44,7 @@
                 "activerecord",
                 "orm"
             ],
-            "time": "2013-04-26 21:01:08"
+            "time": "2014-12-09 22:49:20"
         },
         {
             "name": "slim/slim",
@@ -91,7 +96,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "php-activerecord/php-activerecord": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

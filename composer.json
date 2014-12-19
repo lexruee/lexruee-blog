@@ -1,6 +1,6 @@
 {
   "require": {
     "slim/slim": "2.*",
-    "php-activerecord/php-activerecord": "1.*"
+    "php-activerecord/php-activerecord": "dev-master"
   }
 }
