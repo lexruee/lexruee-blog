@@ -25,6 +25,11 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $this->assertNotNull($user->password);
         $this->assertNotEquals($user->password,'test');
     }
+
+    function testShouldHavePosts(){
+        $user = User::first();
+        $this->assertNotNull($user->posts);
+    }
 }
 
 ?>

@@ -6,6 +6,10 @@ class User extends ActiveRecord\Model {
         'salt' => 'da39a3ee5e6b4b0d3255bfef95601890afd80709'
     );
 
+    static $has_many = array(
+        array('posts')
+    );
+
 
     public function set_password($password){
         $encrypted_password = password_hash($password,PASSWORD_BCRYPT);
