@@ -16,6 +16,12 @@ class PostTest extends PHPUnit_Framework_TestCase {
         assert($post->save());
     }
 
+
+    function testShouldHaveComments(){
+        $post = Post::first();
+        assert($post->comments);
+    }
+
 }
 
 

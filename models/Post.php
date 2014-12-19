@@ -6,6 +6,10 @@ class Post extends ActiveRecord\Model {
         array('user')
     );
 
+    static $has_many =  array(
+        array('comments')
+    );
+
 }
 
 ?>

@@ -30,6 +30,11 @@ class UserTest extends PHPUnit_Framework_TestCase {
         $user = User::first();
         $this->assertNotNull($user->posts);
     }
+
+    function testShouldHaveComments(){
+        $user = User::first();
+        assert($user->comments);
+    }
 }
 
 ?>
