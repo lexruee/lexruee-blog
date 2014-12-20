@@ -11,13 +11,41 @@ $app = new \Slim\Slim(array(
     'debug' => true
 ));
 
+$app->notFound(function() use ($app){
+    $app->render('not_found.php');
+});
+
 $app->get('/', function () use($app){
     $app->response->headers->set('Content-Type','text/html');
     $app->render('index.html');
 });
 
 
+$app->group('/session', function() use($app){
+
+    $app->get('/login',function() use($app){
+        $app->render('login.php');
+    });
+
+    $app->post('/',function(){
+
+    });
+
+});
+
 $app->group('/pages',function() use ($app){
+
+    $app->get('/:title',function($title) use ($app) {
+        $nice_title = str_replace('-',' ', $title);
+        $page = Page::find_by_title($nice_title);
+        if($page) {
+            $app->render('page.php', array(
+                'page' => $page
+            ));
+        } else {
+            $app->render('not_found.php');
+        }
+    });
 
     $app->get('/home',function() use($app){
         $app->response->headers->set('Content-Type','text/html');
