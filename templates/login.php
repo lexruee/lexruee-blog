@@ -5,23 +5,25 @@
         </a>
     </h1>
     <p>
-    <div class="ui form">
-        <div class="required field">
-            <label>Username</label>
-            <div class="ui icon input">
-                <input type="text" placeholder="Username">
-                <i class="user icon"></i>
+    <form id="'login">
+        <div class="ui form">
+            <div class="required field">
+                <label>Username</label>
+                <div class="ui icon input">
+                    <input type="text" placeholder="Username">
+                    <i class="user icon"></i>
+                </div>
             </div>
-        </div>
-        <div class="required field">
-            <label>Password</label>
-            <div class="ui icon input">
-                <input type="password" placeholder="Password">
-                <i class="lock icon"></i>
+            <div class="required field">
+                <label>Password</label>
+                <div class="ui icon input">
+                    <input type="password" placeholder="Password">
+                    <i class="lock icon"></i>
+                </div>
             </div>
+            <div class="ui submit button" onclick="app.login()">Login</div>
         </div>
-        <div class="ui submit button">Login</div>
-    </div>
+    </form>
     </p>
 
 </div>

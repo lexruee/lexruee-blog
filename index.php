@@ -27,7 +27,9 @@ $app->group('/session', function() use($app){
         $app->render('login.php');
     });
 
-    $app->post('/',function(){
+    $app->post('/',function() use($app){
+
+
 
     });
 
@@ -72,7 +74,9 @@ $app->group('/posts', function () use ($app) {
 
     $app->get('/:id', function ($id) use ($app) {
         $post = Post::find($id);
-        $app->response->setBody($post->to_json());
+        $app->render('post.php', array(
+            'post' => $post
+        ));
     });
 
     $app->get('/', function () use ($app, $mapper) {

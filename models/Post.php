@@ -10,6 +10,10 @@ class Post extends Base {
         array('comments')
     );
 
+    public function ugly_title(){
+        return str_replace(' ','-',$this->title);
+    }
+
 }
 
 ?>
