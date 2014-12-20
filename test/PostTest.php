@@ -8,7 +8,7 @@ class PostTest extends PHPUnit_Framework_TestCase {
         echo $user->firstname;
 
         $post = new Post(array(
-            'title' => 'A post title',
+            'title' => 'A post title 4',
             'content' => 'Post content!',
             'user_id' => $user->id
         ));

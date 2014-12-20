@@ -1,6 +1,6 @@
 <?php
 
-class Post extends ActiveRecord\Model {
+class Post extends Base {
 
     static $belongs_to = array(
         array('user')
