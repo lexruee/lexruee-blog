@@ -1,142 +1,179 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 
-        <!-- Standard Meta -->
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-        <title>Lexruee's Blog</title>
-        <script src="public/components/jquery/dist/jquery.min.js"></script>
-        <script src="public/components/semantic-ui/dist/semantic.min.js"></script>
-        <script src="public/app.js"></script>
-        <link rel="stylesheet" type="text/css" href="public/components/semantic-ui/dist/semantic.min.css" />
-        <link rel="stylesheet" type="text/css" href="public/main.css" />
-    </head>
+    <title>Lexruee's Blog</title>
+    <script src="public/components/jquery/dist/jquery.min.js"></script>
+    <script src="public/components/semantic-ui/dist/semantic.min.js"></script>
+    <script src="public/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/components/semantic-ui/dist/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="public/components/font-mfizz-1.2/font-mfizz.css"/>
+    <link rel="stylesheet" type="text/css" href="public/main.css"/>
+</head>
 
-    <body id="main">
+<body id="main">
 
-    <!-- page grid -->
-    <div class="ui grid">
+<!-- page grid -->
+<div class="ui page grid">
+    <div class="ui page">
 
-        <div class="three wide column">
+        <a class="item blue page_home" href="#home">
+            <h1>lexruee.ch</h1>
+        </a>
 
-        </div>
+        <!-- top nav bar -->
+        <div class="ui menu">
 
-        <!-- center page -->
-        <div class="ten wide column">
-            <div class="ui grid">
+            <div class="left menu">
+                <a class="item page_home" href="#home">
+                    <i class="home icon"></i> Home
+                </a>
 
-                <!-- top nav bar -->
-                <div class="sixteen wide column">
-                    <div id="side" class="ui menu">
+                <a class="item page_posts" href="#posts">
+                    <i class="comment icon"></i> Posts
+                </a>
 
-                        <a class="item blue column page_home" href="#home">
+                <a class="item page_projects" href="#projects">
+                    <i class="lab icon"></i> Projects
+                </a>
 
-                                <strong>lexruee.ch</strong>
+                <a class="item page_projects" href="#projects">
+                    <i class="code icon"></i> Prototypes
+                </a>
 
+                <a class="item page_about" href="#about">
+                    <i class="user icon"></i> About
+                </a>
+            </div>
 
-                        </a>
-
-                        <a class="item page_home" href="#home">
-                            <i class="home icon"></i> Home
-                        </a>
-
-                        <a class="item page_posts" href="#posts">
-                            <i class="comment icon"></i> Posts
-                        </a>
-
-                        <a class="item page_projects" href="#projects">
-                            <i class="lab icon"></i> Projects
-                        </a>
-
-                        <a class="item page_about" href="#about">
-                            <i class="user icon"></i> About
-                        </a>
-
-                        <div class="right menu">
-                            <a class="item page_login" href="#login">
-                                <i class="sign in icon"></i> Login
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- content -->
-                <div class="sixteen wide column">
-                    <!-- content grid -->
-                   <div class="ui grid">
-                       <!-- profile content -->
-                       <div class="four wide column">
-                           <div class="ui card">
-                               <div class="image">
-                                   <img src="/public/elliot.jpg">
-                               </div>
-                               <div class="content">
-                                   <a class="header">Stevie Feliciano</a>
-                                   <div class="meta">
-                                       <span class="date">Joined in 2014</span>
-                                   </div>
-                                   <div class="description">
-                                       Stevie Feliciano is a library scientist living in New York City. She likes to spend her time reading, running, and writing.
-                                   </div>
-                               </div>
-                               <div class="extra content">
-                                   <div class="ui link list">
-                                        <a class="item">
-                                           <i class="user icon"></i>
-                                           22 Friends
-                                       </a></li>
-                                       <a class="item">
-                                           <i class="github alternate icon"></i> Github
-                                       </a>
-                                       <a class="item">
-                                           <i class="facebook square icon"></i> Facebook
-                                       </a>
-                                       <a class="item">
-                                           <i class="google plus icon"></i> Google+
-                                       </a>
-                                       <a class="item">
-                                           <i class="marker icon"></i> Bern
-                                       </a>
-                                       <a class="item">
-                                           <i class="university icon"></i> Bern / Fribourg
-                                       </a>
-                                   </div>
-
-
-                               </div>
-                           </div>
-                       </div> <!-- end of profile content -->
-
-                       <!-- content container -->
-                       <div class="twelve wide column">
-                           <!-- page content -->
-                           <div class="sixteen wide column" id="page-content">
-
-                           </div>
-                           <!-- end of page content -->
-
-
-                       </div> <!-- end of content container -->
-
-                   </div> <!-- end of content grid -->
-
-                </div> <!-- end of content -->
-
+            <div class="right menu">
+                <a class="item page_login" href="#login">
+                    <i class="sign in icon"></i> Login
+                </a>
             </div>
         </div>
 
+        <div class="ui divider"></div>
 
-        <div class="three wide column">
+        <!-- main content -->
+        <div class="ui grid">
 
-        </div>
+            <!-- profile content -->
+            <div class="four wide column">
+                <div class="ui card">
+                    <div class="image">
+                        <img src="/public/elliot.jpg">
+                    </div>
+                    <div class="content">
+                        <a class="header">Stevie Feliciano</a>
+
+                        <div class="meta">
+                            <span class="date">Joined in 2014</span>
+                        </div>
+                        <div class="description">
+                            Stevie Feliciano is a library scientist living in New York City. She likes to spend her
+                            time reading, running, and writing.
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui dividing header" id="show-personal-info">
+                            Personal information <i class="angle down icon"></i>
+                        </h4>
+
+                        <div id="personal-info" class="description">
+                            <div class="ui link list">
+                                <a class="item">
+                                    <i class="user icon"></i>
+                                    22 Friends
+                                </a></li>
+                                <a class="item">
+                                    <i class="github alternate icon"></i> Github
+                                </a>
+                                <a class="item">
+                                    <i class="facebook square icon"></i> Facebook
+                                </a>
+                                <a class="item">
+                                    <i class="google plus icon"></i> Google+
+                                </a>
+                                <a class="item">
+                                    <i class="marker icon"></i> Lives in Bern.
+                                </a>
+                                <a class="item">
+                                    <i class="university icon"></i> Studies in Bern / Fribourg
+                                </a>
+
+                                <a class="item">
+                                    <i class="pied piper alternate icon"></i> Likes to code.
+                                </a>
+                                <a class="item">
+                                    &nbsp; <i class="icon-raspberrypi"></i> Likes to hack the Pi.
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ui hidden divider"></div>
+                        <div class="content">
+                            <h4 class="ui dividing header" id="show-skills">
+                                Skills / Knows <i class="angle down icon"></i>
+                            </h4>
+
+                            <div id="skills" class="description">
+                                <div class="ui link list">
+
+                                    <a class="item">
+                                        <i class="linux icon"></i> Debian / Ubuntu
+                                    </a>
+
+                                    <a class="item">
+                                        <i class="git icon"></i> Git
+                                    </a>
+
+                                    <a class="item">
+                                        <i class="icon-java"> </i> Java
+                                    </a>
+                                    <a class="item">
+                                        <i class="icon-php-alt"> </i> PHP
+                                    </a>
+                                    <a class="item">
+                                        <i class="icon-ruby"> </i> Ruby
+                                    </a>
+                                    <a class="item">
+                                        <i class="icon-javascript"> </i> Javascript
+                                    </a>
+                                    <a class="item">
+                                        <i class="icon-mysql-alt"> </i> mysql / sql
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end of profile content -->
+
+            <!-- content container -->
+            <div class="twelve wide column">
+                <!-- page content -->
+                <div class="sixteen wide column" id="page-content">
+                </div> <!-- end of page content -->
+            </div> <!-- end of content grid -->
+        </div> <!-- end of main content -->
+
+        <div class="ui divider"></div>
+        <!-- footer -->
+        <div class="ui grid">
+            <div class="center aligned column">
+                &copy; lexruee.ch
+            </div>
+        </div> <!-- end of footer -->
 
     </div>
+</div>
 
 
-    </body>
+</body>
 
 </html>
