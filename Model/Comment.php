@@ -1,6 +1,9 @@
 <?php
+namespace Models;
+use RedBean_SimpleModel;
 
-class Comment extends ActiveRecord\Model {
+class Comment extends RedBean_SimpleModel {
+    use ToJson;
 
     static $belongs_to = array(
         array('user'),
@@ -14,7 +17,6 @@ class Comment extends ActiveRecord\Model {
             return $this->user->username;
         }
     }
-
 }
 
 ?>
