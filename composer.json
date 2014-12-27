@@ -1,6 +1,7 @@
 {
   "require": {
     "slim/slim": "2.*",
-    "php-activerecord/php-activerecord": "dev-master"
+    "illuminate/database": "4.2.*",
+    "robmorgan/phinx": "*"
   }
 }
