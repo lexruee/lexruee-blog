@@ -1,0 +1,21 @@
+
+<div class="ui stacked blue primary segment" ng-repeat="post in posts">
+    <h1 class="ui header">
+
+        <div class="content">
+            <a href="#/posts/{{post.date}}/{{post.ugly_title}}">
+                <i class="comment outline icon"></i> {{post.title}}
+            </a>
+            <div class="sub header">
+                <a class="author">{{post.username}}</a> , <span class="date">{{post.date}}</span>
+            </div>
+
+        </div>
+    </h1>
+    <p>
+        {{post.content}}
+    </p>
+    <a href="#/posts/{{post.date}}/{{post.ugly_title}}">
+        <div class="column"><i class="comments icon"></i>Comments ({{post.comments_count}})</div>
+    </a>
+</div>

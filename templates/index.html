@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blogApp">
 <head>
 
     <!-- Standard Meta -->
@@ -10,7 +10,9 @@
     <title>Lexruee's Blog</title>
     <script src="public/components/jquery/dist/jquery.min.js"></script>
     <script src="public/components/semantic-ui/dist/semantic.min.js"></script>
-    <script src="public/app.js"></script>
+    <script src="public/components/angularjs/angular.min.js"></script>
+    <script src="public/components/angular-route/angular-route.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="public/components/semantic-ui/dist/semantic.min.css"/>
     <link rel="stylesheet" type="text/css" href="public/components/font-mfizz-1.2/font-mfizz.css"/>
     <link rel="stylesheet" type="text/css" href="public/main.css"/>
@@ -18,162 +20,163 @@
 
 <body id="main">
 
-<!-- page grid -->
-<div class="ui page grid">
-    <div class="ui page">
+    <!-- page grid -->
+    <div class="ui page grid">
+        <div class="ui page">
 
-        <a class="item blue page_home" href="#home">
-            <h1>lexruee.ch</h1>
-        </a>
+            <a class="item blue page_home" href="#/home">
+                <h1>lexruee.ch</h1>
+            </a>
 
-        <!-- top nav bar -->
-        <div class="ui menu">
+            <!-- top nav bar -->
+            <div class="ui menu">
 
-            <div class="left menu">
-                <a class="item page_home" href="#home">
-                    <i class="home icon"></i> Home
-                </a>
+                <div class="left menu">
+                    <a class="item" href="#/pages/home">
+                        <i class="home icon"></i> Home
+                    </a>
 
-                <a class="item page_posts" href="#posts">
-                    <i class="comment icon"></i> Posts
-                </a>
+                    <a class="item" href="#/posts">
+                        <i class="comment icon"></i> Posts
+                    </a>
 
-                <a class="item page_projects" href="#projects">
-                    <i class="lab icon"></i> Projects
-                </a>
+                    <a class="item" href="#/pages/projects">
+                        <i class="lab icon"></i> Projects
+                    </a>
 
-                <a class="item page_projects" href="#projects">
-                    <i class="code icon"></i> Prototypes
-                </a>
+                    <a class="item" href="#/pages/prototypes">
+                        <i class="code icon"></i> Prototypes
+                    </a>
 
-                <a class="item page_about" href="#about">
-                    <i class="user icon"></i> About
-                </a>
-            </div>
+                    <a class="item" href="#/pages/about">
+                        <i class="user icon"></i> About
+                    </a>
+                </div>
 
-            <div class="right menu">
-                <a class="item page_login" href="#login">
-                    <i class="sign in icon"></i> Login
-                </a>
-            </div>
-        </div>
+                <div class="right menu">
+                    <a class="item page_login" href="#/login">
+                        <i class="sign in icon"></i> Login
+                    </a>
+                </div>
+            </div> <!-- end of top nav bar -->
 
-        <div class="ui divider"></div>
+            <div class="ui divider"></div>
 
-        <!-- main content -->
-        <div class="ui grid">
+            <!-- main content -->
+            <div class="ui grid">
 
-            <!-- profile content -->
-            <div class="four wide column">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="/public/elliot.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Stevie Feliciano</a>
-
-                        <div class="meta">
-                            <span class="date">Joined in 2014</span>
+                <!-- profile content -->
+                <div class="four wide column">
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="/public/elliot.jpg">
                         </div>
-                        <div class="description">
-                            Stevie Feliciano is a library scientist living in New York City. She likes to spend her
-                            time reading, running, and writing.
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="ui dividing header" id="show-personal-info">
-                            Personal information <i class="angle down icon"></i>
-                        </h4>
+                        <div class="content">
+                            <a class="header">Alexander Rueedlinger</a>
 
-                        <div id="personal-info" class="description">
-                            <div class="ui link list">
-                                <a class="item">
-                                    <i class="user icon"></i>
-                                    22 Friends
-                                </a></li>
-                                <a class="item">
-                                    <i class="github alternate icon"></i> Github
-                                </a>
-                                <a class="item">
-                                    <i class="facebook square icon"></i> Facebook
-                                </a>
-                                <a class="item">
-                                    <i class="google plus icon"></i> Google+
-                                </a>
-                                <a class="item">
-                                    <i class="marker icon"></i> Lives in Bern.
-                                </a>
-                                <a class="item">
-                                    <i class="university icon"></i> Studies in Bern / Fribourg
-                                </a>
-
-                                <a class="item">
-                                    <i class="pied piper alternate icon"></i> Likes to code.
-                                </a>
-                                <a class="item">
-                                    &nbsp; <i class="icon-raspberrypi"></i> Likes to hack the Pi.
-                                </a>
+                            <div class="meta">
+                                <span class="date">Joined in 2014</span>
+                            </div>
+                            <div class="description">
+                                Stevie Feliciano is a library scientist living in New York City. She likes to spend her
+                                time reading, running, and writing.
                             </div>
                         </div>
-                        <div class="ui hidden divider"></div>
-                        <div class="content">
-                            <h4 class="ui dividing header" id="show-skills">
-                                Skills / Knows <i class="angle down icon"></i>
+                        <div class="content" ng-controller="PersonalPanelController">
+                            <h4 class="ui dividing header" ng-click="show()">
+                                Personal information <i class="angle down icon"></i>
                             </h4>
 
-                            <div id="skills" class="description">
+                            <div id="personal-info" class="description">
                                 <div class="ui link list">
-
                                     <a class="item">
-                                        <i class="linux icon"></i> Debian / Ubuntu
+                                        <i class="user icon"></i>
+                                        22 Friends
+                                    </a></li>
+                                    <a class="item">
+                                        <i class="github alternate icon"></i> Github
+                                    </a>
+                                    <a class="item">
+                                        <i class="facebook square icon"></i> Facebook
+                                    </a>
+                                    <a class="item">
+                                        <i class="google plus icon"></i> Google+
+                                    </a>
+                                    <a class="item">
+                                        <i class="marker icon"></i> Lives in Bern.
+                                    </a>
+                                    <a class="item">
+                                        <i class="university icon"></i> Studies in Bern / Fribourg
                                     </a>
 
                                     <a class="item">
-                                        <i class="git icon"></i> Git
+                                        <i class="pied piper alternate icon"></i> Likes to code.
                                     </a>
+                                    <a class="item">
+                                        &nbsp; <i class="icon-raspberrypi"></i> Likes to hack the Pi.
+                                    </a>
+                                </div>
+                            </div>
 
-                                    <a class="item">
-                                        <i class="icon-java"> </i> Java
-                                    </a>
-                                    <a class="item">
-                                        <i class="icon-php-alt"> </i> PHP
-                                    </a>
-                                    <a class="item">
-                                        <i class="icon-ruby"> </i> Ruby
-                                    </a>
-                                    <a class="item">
-                                        <i class="icon-javascript"> </i> Javascript
-                                    </a>
-                                    <a class="item">
-                                        <i class="icon-mysql-alt"> </i> mysql / sql
-                                    </a>
+                            <div class="ui hidden divider"></div>
+
+                            <div class="content" ng-controller="SkillsPanelController">
+                                <h4 class="ui dividing header" ng-click="show()">
+                                    Skills / Knows <i class="angle down icon"></i>
+                                </h4>
+
+                                <div id="skills" class="description">
+                                    <div class="ui link list">
+
+                                        <a class="item">
+                                            <i class="linux icon"></i> Debian / Ubuntu
+                                        </a>
+
+                                        <a class="item">
+                                            <i class="git icon"></i> Git
+                                        </a>
+
+                                        <a class="item">
+                                            <i class="icon-java"> </i> Java
+                                        </a>
+                                        <a class="item">
+                                            <i class="icon-php-alt"> </i> PHP
+                                        </a>
+                                        <a class="item">
+                                            <i class="icon-ruby"> </i> Ruby
+                                        </a>
+                                        <a class="item">
+                                            <i class="icon-javascript"> </i> Javascript
+                                        </a>
+                                        <a class="item">
+                                            <i class="icon-mysql-alt"> </i> mysql / sql
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div> <!-- end of profile content -->
+
+                <!-- content container -->
+                <div class="twelve wide column">
+                    <!-- page content -->
+                    <div class="sixteen wide column" id="page-content" ng-view>
+                    </div> <!-- end of page content -->
+                </div> <!-- end of content grid -->
+            </div> <!-- end of main content -->
+
+            <div class="ui divider"></div>
+            <!-- footer -->
+            <div class="ui grid">
+                <div class="center aligned column">
+                    &copy; lexruee.ch
                 </div>
-            </div> <!-- end of profile content -->
+            </div> <!-- end of footer -->
 
-            <!-- content container -->
-            <div class="twelve wide column">
-                <!-- page content -->
-                <div class="sixteen wide column" id="page-content">
-                </div> <!-- end of page content -->
-            </div> <!-- end of content grid -->
-        </div> <!-- end of main content -->
-
-        <div class="ui divider"></div>
-        <!-- footer -->
-        <div class="ui grid">
-            <div class="center aligned column">
-                &copy; lexruee.ch
-            </div>
-        </div> <!-- end of footer -->
-
+        </div>
     </div>
-</div>
-
-
+    <script src="public/app.js"></script>
 </body>
 
 </html>

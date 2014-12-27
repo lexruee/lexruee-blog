@@ -1,0 +1,55 @@
+
+<div class="ui stacked blue primary segment">
+    <h1 class="ui header">
+
+        <div class="content">
+            <a href="#posts/{{post.title}}">
+                <i class="comment outline icon"></i> {{post.title}}
+            </a>
+            <div class="sub header">
+                <a class="author">{{post.username}}</a> , <span class="date">{{post.created_at}}</span>
+            </div>
+
+        </div>
+    </h1>
+
+    <p>
+        {{post.content}}
+    </p>
+    <p>
+
+
+    <div class="ui comments">
+        <h3 class="ui dividing header">Comments</h3>
+
+        <div class="comment">
+            <a class="avatar">
+                <h2 class="ui header"> <i class="user icon"></i> </h2>
+            </a>
+            <div class="content">
+                <a class="author">a user</a>
+                <div class="metadata">
+                    <span class="date">Today at 5:42PM</span>
+                </div>
+                <div class="text">
+                    How artistic!
+                </div>
+                <div class="actions">
+                    <a class="reply">Reply</a>
+                </div>
+            </div>
+        </div>
+
+
+        <form class="ui reply form">
+            <div class="field">
+                <textarea></textarea>
+            </div>
+            <div class="ui blue labeled submit icon button">
+                <i class="icon edit"></i> Add Reply
+            </div>
+        </form>
+    </div>
+
+    </p>
+</div>
