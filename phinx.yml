@@ -1,0 +1,19 @@
+paths:
+    migrations: %%PHINX_CONFIG_DIR%%/migrations
+
+environments:
+    default_migration_table: phinxlog
+    default_database: development
+
+    production:
+        adapter: sqlite
+        name: ./blog_production.db
+
+
+    development:
+        adapter: sqlite
+        name: ./blog_development.db
+
+    testing:
+        adapter: sqlite
+        memory: true
