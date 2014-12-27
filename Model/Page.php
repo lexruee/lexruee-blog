@@ -1,24 +1,24 @@
 <?php
-namespace Models;
-use RedBean_SimpleModel;
+namespace Model;
+use Illuminate\Database\Eloquent\Model as Model;
+use Traits\FindPageByTitle;
+use Traits\UglyTitle;
 
-class Page extends RedBean_SimpleModel {
+class Page extends Model {
+    use UglyTitle;
+    use FindPageByTitle;
 
+    protected $table = 'pages';
 
-    static $belongs_to = array(
-        array('user')
-    );
-
-    public function ugly_title(){
-        return str_replace(' ','-',$this->title);
+    public function user(){
+        return $this->belongsTo('Model\User');
     }
 
-    public function to_hash(){
-        return array(
-            'title' => $this->title,
-            'content' => $this->content,
-            'username' => $this->user->username
-        );
+    public function toArray(){
+        $array = parent::toArray();
+        $array['username'] = $this->user->username;
+        return $array;
     }
+
 }
 ?>

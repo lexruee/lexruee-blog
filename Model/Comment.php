@@ -1,22 +1,15 @@
 <?php
-namespace Models;
-use RedBean_SimpleModel;
+namespace Model;
+use Illuminate\Database\Eloquent\Model as Model;
 
-class Comment extends RedBean_SimpleModel {
-    use ToJson;
+class Comment extends Model {
 
-    static $belongs_to = array(
-        array('user'),
-        array('post')
-    );
+    protected $table = 'comments';
 
-    public function username(){
-        if(!empty($this->name)){
-            return $this->name;
-        } else {
-            return $this->user->username;
-        }
+    public function post(){
+        return $this->belongsTo('Model\Post');
     }
+
 }
 
 ?>

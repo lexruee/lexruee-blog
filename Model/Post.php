@@ -1,30 +1,39 @@
 <?php
-namespace Models;
-use RedBean_SimpleModel;
+namespace Model;
+use Illuminate\Database\Eloquent\Model as Model;
+use Traits\CreatedAt;
+use Traits\FindPostByDateAndTitle;
+use Traits\UglyTitle;
 
-class Post extends RedBean_SimpleModel {
-    use ToJson;
+class Post extends Model {
+    use UglyTitle;
+    use FindPostByDateAndTitle;
+    use CreatedAt;
 
-    static $belongs_to = array(
-        array('user')
-    );
+    protected $table = 'posts';
 
-    static $has_many =  array(
-        array('comments')
-    );
-
-    public function ugly_title(){
-        return str_replace(' ','-',$this->title);
+    public function user(){
+        return $this->belongsTo('Model\User');
     }
 
-    public function to_hash(){
-        return array(
-            'title' => $this->title,
-            'ugly_title' => $this->ugly_title(),
-            'content' => $this->content,
-            'username' => $this->user->username
-        );
+
+    public function comments(){
+        return $this->hasMany('Model\Comment');
     }
+
+
+    public function toArray(){
+        $array = parent::toArray();
+        $array['username'] = $this->user->username;
+        $array['comments_count'] = $this->comments()->count();
+        $array['ugly_title'] = $this->uglyTitle();
+        return $array;
+    }
+
 }
+
+Post::creating(function($post){
+    $post->date = date("Y-m-d");
+})
 
 ?>
