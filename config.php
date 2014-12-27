@@ -2,17 +2,35 @@
 
 require 'vendor/autoload.php';
 
-ActiveRecord\Config::initialize(function($cfg){
+use Illuminate\Database\Capsule\Manager as Capsule;
+$capsule = new Capsule;
+$capsule->addConnection([
+    'driver'    => 'sqlite',
+    'database'  => './blog_development.db.sqlite3',
+    'prefix' => ''
+]);
 
-    $cfg->set_model_directory('models');
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
+$capsule->setEventDispatcher(new Dispatcher(new Container()));
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
-    $cfg->set_connections(array(
-        'development' => 'sqlite://blog.db'
-    ));
+function autoload($className)
+{
+    $className = ltrim($className, '\\');
+    $fileName  = '';
+    $namespace = '';
+    if ($lastNsPos = strrpos($className, '\\')) {
+        $namespace = substr($className, 0, $lastNsPos);
+        $className = substr($className, $lastNsPos + 1);
+        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+    }
+    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 
-    $cfg->set_default_connection('development');
-});
-
+    require $fileName;
+}
+spl_autoload_register('autoload');
 
 
 ?>

@@ -11,99 +11,71 @@ $app = new \Slim\Slim(array(
     'debug' => true
 ));
 
-$app->notFound(function() use ($app){
-    $app->render('not_found.php');
-});
-
 $app->get('/', function () use($app){
-    $app->response->headers->set('Content-Type','text/html');
+    $app->response->header('Content-Type','text/html');
     $app->render('index.html');
 });
 
-
+/**
+ * Session resource
+ */
 $app->group('/session', function() use($app){
 
     $app->get('/login',function() use($app){
-        $app->render('login.php');
+
     });
 
     $app->post('/',function() use($app){
 
-
-
     });
-
 });
 
+
+/**
+ * Page resource
+ */
 $app->group('/pages',function() use ($app){
 
     $app->get('/:title',function($title) use ($app) {
-        $nice_title = str_replace('-',' ', $title);
-        $page = Page::find_by_title($nice_title);
+        $app->response->header('Content-Type', 'application/json');
+        $page = Model\Page::findByTitle($title);
         if($page) {
-            $app->render('page.php', array(
-                'page' => $page
-            ));
+            echo $page->toJson();
         } else {
-            $app->render('not_found.php');
+            echo json_encode(array(
+                'title' => 'Not found!',
+                'content' => 'Not found!'
+            ));
         }
     });
 
-    $app->get('/home',function() use($app){
-        $app->response->headers->set('Content-Type','text/html');
-        $app->render('home.php');
-    });
-
-    $app->get('/about',function() use($app){
-        $app->response->headers->set('Content-Type','text/html');
-        $app->render('about.php');
-    });
-
 });
 
 
 /**
- * Post resources
+ * Post resource
  */
 $app->group('/posts', function () use ($app) {
-    $app->response->headers->set('Content-Type', 'text/html');
 
     $mapper = function ($resource) {
-        return $resource->to_array();
+        return $resource;
     };
 
-    $app->get('/:id', function ($id) use ($app) {
-        $post = Post::find($id);
-        $app->render('post.php', array(
-            'post' => $post
-        ));
+    $app->get('/:date/:id', function ($date, $title) use ($app) {
+        $app->response->header('Content-Type', 'application/json');
+        $post = Model\Post::findByDateAndTitle($date, $title);
+        echo $post->toJson();
     });
 
     $app->get('/', function () use ($app, $mapper) {
-        $page = $app->request->params('page');
-        $page = !empty($page) ? $page : 1;
-        $posts = Post::paginate(array(
-           'per_page' => 4,
-            'page' => $page
-        ));
-        $app->render('posts.php',array(
-            'posts' => $posts,
-            'current_page' => $page,
-            'pages' => Post::pages()
-        ));
+        $app->response->header('Content-Type', 'application/json');
+        echo Model\Post::all()->toJson();
     });
-
-    $app->get('/:id/comments',function($id) use($app, $mapper){
-        $post = Post::find($id);
-        $comments = array_map($mapper, $post->comments);
-        $app->response->setBody(json_encode($comments));
-    });
-
 });
 
 
 /**
- * Comment resources
+ * Comment resource
  */
 
 $app->group('/comments', function () use($app) {
