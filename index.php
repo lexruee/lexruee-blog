@@ -16,19 +16,6 @@ $app->get('/', function () use($app){
     $app->render('index.html');
 });
 
-/**
- * Session resource
- */
-$app->group('/session', function() use($app){
-
-    $app->get('/login',function() use($app){
-
-    });
-
-    $app->post('/',function() use($app){
-
-    });
-});
 
 
 /**
@@ -48,7 +35,6 @@ $app->group('/pages',function() use ($app){
             ));
         }
     });
-
 });
 
 
@@ -80,6 +66,43 @@ $app->group('/posts', function () use ($app) {
 
 $app->group('/comments', function () use($app) {
 
+});
+
+
+
+/**
+ * Admin area
+ */
+
+/**
+ * Session resource
+ */
+$app->group('/session', function() use($app){
+
+    $app->get('/login',function() use($app){
+
+    });
+
+    $app->post('/',function() use($app){
+
+    });
+});
+
+$app->group('/admin',function() use($app){
+
+    $app->get('/',function() use($app){
+       $app->redirect('admin/login');
+    });
+
+    $app->get('/login',function() use($app){
+        $app->render('admin/login.html');
+    });
+
+    $app->group('/posts',function() use($app){
+        $app->get('/',function() use($app){
+
+        });
+    });
 });
 
 
