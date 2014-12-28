@@ -1,29 +1,80 @@
-<div class="ui stacked blue primary segment">
-    <h1 class="ui header">
-        <a>
-            <i class="sign in icon"></i> Login
-        </a>
-    </h1>
-    <p>
-    <form id="'login">
-        <div class="ui form">
-            <div class="required field">
-                <label>Username</label>
-                <div class="ui icon input">
-                    <input type="text" placeholder="Username">
-                    <i class="user icon"></i>
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head>
+
+    <!-- Standard Meta -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Lexruee's Blog</title>
+    <script src="/public/components/jquery/dist/jquery.min.js"></script>
+    <script src="/public/components/semantic-ui/dist/semantic.min.js"></script>
+    <script src="/public/components/angularjs/angular.min.js"></script>
+    <script src="/public/components/angular-route/angular-route.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/public/components/semantic-ui/dist/semantic.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/components/font-mfizz-1.2/font-mfizz.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/main.css"/>
+</head>
+<body id="main">
+<!-- page grid -->
+<div class="ui page grid">
+    <!-- main content -->
+    <div class="ui page grid">
+
+        <div class="row">
+            <div class="column">
+                <a class="item blue page_home" href="/">
+                    <h1>lexruee.ch</h1>
+                </a>
+
+                <div class="ui divider"></div>
+                <div class="ui stacked blue primary segment">
+                    <h1 class="ui header">
+                        <a>
+                            <i class="sign in icon"></i> Login
+                        </a>
+                    </h1>
+
+                    <form id="login">
+                        <div class="ui form">
+                            <div class="required field">
+                                <label>Username</label>
+
+                                <div class="ui icon input">
+                                    <input type="text" placeholder="Username">
+                                    <i class="user icon"></i>
+                                </div>
+                            </div>
+                            <div class="required field">
+                                <label>Password</label>
+
+                                <div class="ui icon input">
+                                    <input type="password" placeholder="Password">
+                                    <i class="lock icon"></i>
+                                </div>
+                            </div>
+                            <div class="ui submit button">Login</div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="required field">
-                <label>Password</label>
-                <div class="ui icon input">
-                    <input type="password" placeholder="Password">
-                    <i class="lock icon"></i>
-                </div>
-            </div>
-            <div class="ui submit button" onclick="app.login()">Login</div>
         </div>
-    </form>
-    </p>
+
+
+        <div class="ui divider"></div>
+        <!-- footer -->
+        <div class="ui grid">
+            <div class="center aligned column">
+                &copy; lexruee.ch
+            </div>
+        </div>
+        <!-- end of footer -->
+    </div>
+    <!-- end of content grid -->
 
 </div>
+<script src="/public/admin-app.js"></script>
+</body>
+</html>
